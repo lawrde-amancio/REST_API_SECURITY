@@ -31,7 +31,8 @@ public class StudentNotFoundException extends RuntimeException {
     }
 
     /**
-     * Constructs a new {@code StudentNotFoundException} with the specified cause.
+     * Constructs a new {@code StudentNotFoundException} with 
+     * the specified cause.
      *
      * @param cause the underlying cause of this exception
      */
