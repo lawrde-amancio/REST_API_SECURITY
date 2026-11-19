@@ -1,7 +1,8 @@
 package com.spring.spring_rest.dto;
 
 /**
- * Data Transfer Object (DTO) encapsulating credentials for registering a new user account.
+ * Data Transfer Object (DTO) encapsulating credentials 
+ * for registering a new user account.
  */
 public class AuthUserRegisterDto {
 

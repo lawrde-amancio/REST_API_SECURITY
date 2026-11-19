@@ -24,7 +24,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 /**
- * REST controller responsible for handling user authentication, user registration,
+ * REST controller responsible for handling user
+ *  authentication, user registration,
  * and role creation endpoints under {@code /api/auth}.
  */
 @RestController 
@@ -38,12 +39,17 @@ public class AuthenticationController {
 
 
     /**
-     * Constructs a new {@code AuthenticationController} with the required security and repository dependencies.
+     * Constructs a new {@code AuthenticationController} with the 
+     * required security and repository dependencies.
      *
-     * @param authenticationManager the manager used to process authentication requests
-     * @param authUserRepo          the repository for managing {@link Auth_User} entities
-     * @param authRoleRepo          the repository for managing {@link Auth_Role} entities
-     * @param passwordEncoder       the encoder used to hash user passwords before storage
+     * @param authenticationManager the manager used to process 
+     * authentication requests
+     * @param authUserRepo          the repository for managing 
+     * {@link Auth_User} entities
+     * @param authRoleRepo          the repository for managing 
+     * {@link Auth_Role} entities
+     * @param passwordEncoder       the encoder used to hash user 
+     * passwords before storage
      */
     public AuthenticationController(
         AuthenticationManager authenticationManager,
@@ -56,10 +62,13 @@ public class AuthenticationController {
         }
 
     /**
-     * Registers a new authorization role in the system if it does not already exist.
+     * Registers a new authorization role in the system if it 
+     * does not already exist.
      *
-     * @param authRoleRegisterDto the DTO containing the name of the role to be created
-     * @return a {@link ResponseEntity} with status {@code 200 OK} if created successfully,
+     * @param authRoleRegisterDto the DTO containing the name of the 
+     * role to be created
+     * @return a {@link ResponseEntity} with status {@code 200 OK} 
+     * if created successfully,
      *         or {@code 400 Bad Request} if the role name already exists
      */
     @PostMapping("/register_authorized_role")
@@ -82,12 +91,16 @@ public class AuthenticationController {
         }
 
     /**
-     * Registers a new user account with a default {@code USER} role and an encoded password.
+     * Registers a new user account with a default {@code USER} 
+     * role and an encoded password.
      *
-     * @param authUserRegisterDto the DTO containing the new user's username and raw password
-     * @return a {@link ResponseEntity} with status {@code 200 OK} upon successful registration,
+     * @param authUserRegisterDto the DTO containing the new user's 
+     * username and raw password
+     * @return a {@link ResponseEntity} with status {@code 200 OK} 
+     * upon successful registration,
      *         or {@code 400 Bad Request} if the username is already taken
-     * @throws RuntimeException if the default {@code USER} role is not found in the database
+     * @throws RuntimeException if the default {@code USER} role 
+     * is not found in the database
      */
     @PostMapping("/register_authorized_user")
     public ResponseEntity<String> register_authUser(
@@ -117,11 +130,14 @@ public class AuthenticationController {
         }
 
     /**
-     * Authenticates a user using their username and password and stores the authentication
+     * Authenticates a user using their username and password 
+     * and stores the authentication
      * details in the current {@link SecurityContextHolder}.
      *
-     * @param authLoginDto the DTO containing the login credentials (username and password)
-     * @return a {@link ResponseEntity} containing a confirmation message with status {@code 200 OK}
+     * @param authLoginDto the DTO containing the login 
+     * credentials (username and password)
+     * @return a {@link ResponseEntity} containing a confirmation 
+     * message with status {@code 200 OK}
      */
     @PostMapping("/auth_login")
     public ResponseEntity<String> login(
@@ -135,20 +151,10 @@ public class AuthenticationController {
         
     }
     
-    /**
-     * Retrieves the configured {@link AuthenticationManager}.
-     *
-     * @return the current authentication manager instance
-     */
     public AuthenticationManager getAuthenticationManager() {
         return authenticationManager;
     }
 
-    /**
-     * Sets the {@link AuthenticationManager} to be used by this controller.
-     *
-     * @param authenticationManager the authentication manager to set
-     */
     public void setAuthenticationManager(
         AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -177,7 +183,5 @@ public class AuthenticationController {
     public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
-
-    
 
 }
